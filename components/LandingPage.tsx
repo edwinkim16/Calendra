@@ -1,5 +1,7 @@
 'use client'
 import Image from "next/image"
+import { SignIn } from "@clerk/nextjs"
+import { neobrutalism } from "@clerk/themes"
 
 export default function LandingPage() {
   return (
@@ -13,7 +15,33 @@ export default function LandingPage() {
             height={300}
             alt="Logo"
             />
+            {/* Main Heading */}
+            <h1 className="text-2xl font-black lg:text-3xl">
+            Your time, perfectly planned
+            </h1>
+            {/* Subheading */}
+            <p className="font-extralight">
+            Join millions of professionals who easily book meetings with the #1 scheduling tool
+            </p>
+
+            {/* Illustration below the text */}
+            <Image
+            src='/assets/planning.svg'
+            width={500}
+            height={500}
+            alt="Logo"
+            />
         </section>
+        {/* Clerk Sign-In Component with custom theme */}
+        <div className="mt-3">
+            <SignIn
+            routing="hash" // Keeps sign-in UI on the same page using hash-based routing
+            appearance={{
+                baseTheme: neobrutalism, // Applies the neobrutalism theme style to the sign-in UI
+            }}
+            />
+        </div>
+
     </main>
   );
 }
